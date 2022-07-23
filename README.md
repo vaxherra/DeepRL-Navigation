@@ -74,7 +74,7 @@ can download it from one of the links below. You need only select the environmen
 - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86.zip)
 - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)
 
-Then, place the file in the `p1_navigation/` folder in the course GitHub repository, and unzip (or decompress) the file.
+Then, place the file in the `data/` folder in the course GitHub repository, and unzip (or decompress) the file.
 
 (For Windows users) [Check out this link](https://support.microsoft.com/en-us/help/827218/how-to-determine-whether-a-computer-is-running-a-32-bit-version-or-64) if you need help with determining if your computer is running a 32-bit version or 64-bit version of the Windows operating system.
 
