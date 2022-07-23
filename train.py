@@ -23,7 +23,7 @@ def plot_results(scores, title):
     ax.set_ylabel('Score')
     ax.grid(True)
     plt.show()
-    plt.savefig(title + '.png')
+    fig.savefig(title + '.png')
     plt.close()
 
 
