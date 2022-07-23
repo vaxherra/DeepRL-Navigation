@@ -45,8 +45,21 @@ class Agent:
 
         # Initialize time step (for updating every UPDATE_EVERY steps)
         self.t_step = 0
-    
+
     def step(self, state, action, reward, next_state, done):
+        """
+        Store experience in replay memory and Pperform one step of learning if enough samples are available,
+        and if it is time to update the policy (every UPDATE_EVERY steps).
+
+        Params
+        ======
+            state (array_like): current state
+            action (array_like): action taken
+            reward (float): reward received
+            next_state (array_like): next state
+            done (bool): if the episode is done
+
+        """
         # Save experience in replay memory
         self.memory.add(state, action, reward, next_state, done)
         
