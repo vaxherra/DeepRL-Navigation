@@ -11,11 +11,13 @@ import matplotlib.pyplot as plt
 
 
 def load_yaml(filename):
+    """ Load a yaml file """
     with open(filename, 'r') as f:
         return yaml.load(f)
 
 
 def plot_results(scores, title):
+    """ Plot the results (scores) of the agent and save as a figure in PNG format """
     fig, ax = plt.subplots()
     ax.plot(scores)
     ax.set_title(title)
@@ -28,6 +30,7 @@ def plot_results(scores, title):
 
 
 def save_model(model, episode_num, save_path):
+    """ Save the model checkpoint """
     checkpoint = {
         'episode_num': episode_num,
         'state_dict': model.state_dict()
@@ -36,6 +39,7 @@ def save_model(model, episode_num, save_path):
 
 
 def load_model(model, save_path):
+    """ Load the model """
     checkpoint = torch.load(save_path)
     model.load_state_dict(checkpoint['state_dict'])
     return model
@@ -43,6 +47,22 @@ def load_model(model, save_path):
 
 def dqn(agent, env, brain_name, settings, n_episodes=2000, max_t=100000, eps_start=1., eps_end=.01, eps_decay=.995,
         checkpoint_path="checkpoint.pth", model_path="model.pth"):
+    """ Deep Q-Learning: a training method for Deep Reinforcement Q-Learning.
+
+    Params:
+        agent: the agent
+        env: the environment
+        brain_name: the name of the brain (the brain is the RL Gym environment)
+        settings: the settings, loaded from the settings.yaml file
+        n_episodes: the number of episodes to train the agent
+        max_t: the maximum number of timesteps per episode
+        eps_start: the starting value of epsilon, the epsilon-greedy parameter
+        eps_end: the final value of epsilon after decay
+        eps_decay: the decay rate of epsilon
+        checkpoint_path: the path to the checkpoint file
+        model_path: the path to the model file
+
+    """
 
     scores = []
     scores_window = deque(maxlen=settings['evaluation']['window_size'])
@@ -80,7 +100,24 @@ def dqn(agent, env, brain_name, settings, n_episodes=2000, max_t=100000, eps_sta
             return scores
     return scores
 
+
 def test_agent(env, brain_name, settings, train_params, model_path="model.pth"):
+    """ Test the agent
+
+    Load the model and test the agent on the environment, evaluating the agent's performance.
+    Checks the agent's performance on the environment and evaluates the agent's performance against specific
+    metric specified in the settings.yaml file.
+
+    Params:
+        env: the environment
+        brain_name: the name of the brain (the brain is the RL Gym environment)
+        settings: the settings, loaded from the settings.yaml file
+        train_params: the parameters of the training
+        model_path: the path to the model file
+
+
+
+    """
 
     # Define an untrained agent
     agent_test = Agent(state_size=settings['state_size'], action_size=settings['action_size'], seed=settings['seed'],
