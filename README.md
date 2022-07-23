@@ -87,8 +87,4 @@ Then, place the file in the `data/` folder in the course GitHub repository, and 
 ## Instructions
 
 In order to train the agent, you will need to install required dependencies and download the Unity environment.
-Finally, run the `Navigation.ipynb` notebook (interactive exploration), **or alternatively** run the `train.py` script:
-
-```bash
-python train.py
-```
+Finally, run the `Navigation.ipynb` notebook (interactive exploration), **or alternatively** run the `train.py` script: `python train.py`.
