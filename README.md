@@ -50,7 +50,7 @@ To set up your python environment to run the code in this repository, follow the
 2. Follow the instructions in [this repository](https://github.com/openai/gym) to perform a minimal install of OpenAI gym.  
 	- Install the **box2d** environment group by following the instructions [here](https://github.com/openai/gym#box2d).
 	
-3.  Bavigate to the `python/` folder.  Then, install several dependencies.
+3.  Navigate to the `python/` folder.  Then, install several dependencies.
 ```bash
 pip -q install ./python
 ```
@@ -67,7 +67,9 @@ python -m ipykernel install --user --name drlnd --display-name "drlnd"
 
 ### Downloading Unity Environment
 
-can download it from one of the links below. You need only select the environment that matches your operating system:
+Default linux-based 'Banana' environment is a part of this repository. 
+
+However, in case you work with other systems or want to re-download data yourself - you can download it from one of the links below. You need only select the environment that matches your operating system:
 
 - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux.zip)
 - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip)
@@ -85,7 +87,7 @@ Then, place the file in the `data/` folder in the course GitHub repository, and 
 ## Instructions
 
 In order to train the agent, you will need to install required dependencies and download the Unity environment.
-Finally, run the `train.py` script:
+Finally, run the `Navigation.ipynb` notebook (interactive exploration), **or alternatively** run the `train.py` script:
 
 ```bash
 python train.py
