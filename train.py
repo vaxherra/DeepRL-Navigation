@@ -80,10 +80,11 @@ def dqn(agent, env, brain_name, settings, n_episodes=2000, max_t=100000, eps_sta
             return scores
     return scores
 
-def test_agent(env, brain_name, settings, model_path="model.pth"):
+def test_agent(env, brain_name, settings, train_params, model_path="model.pth"):
 
     # Define an untrained agent
-    agent_test = Agent(state_size=settings['state_size'], action_size=settings['action_size'], seed=settings['seed'])
+    agent_test = Agent(state_size=settings['state_size'], action_size=settings['action_size'], seed=settings['seed'],
+                       train_params=train_params)
 
     # Load the trained model
     agent_test.qnetwork_local.load_state_dict(torch.load(model_path))
