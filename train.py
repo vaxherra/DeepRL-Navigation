@@ -94,6 +94,7 @@ def test_agent(env, brain_name, settings, model_path="model.pth"):
     # Get the state, and initialize the score
     state = env_info.vector_observations[0]
     score = 0
+    min_score = settings['evaluation']['min_score']
 
     # Loop until the agent finds the goal
     while True:
@@ -108,11 +109,12 @@ def test_agent(env, brain_name, settings, model_path="model.pth"):
             break
 
     try:
-        assert score >= settings['evaluation']['min_score']
+        assert score >= min_score
     except AssertionError:
         print("The trained agent failed to find the goal")
     else:
-        print("The trained agent found the goal")
+        print(f"The trained agent found the goal: {min_score} average score, over"
+              f" {settings['evaluation']['window_size']} episodes")
 
 
 def main():
