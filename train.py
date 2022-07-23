@@ -159,6 +159,16 @@ def main():
     # Load the config file
     settings = load_yaml("settings.yaml")
 
+    # Set the train parameters
+    train_params = {
+        'BUFFER_SIZE': int(1e5),  # replay buffer size
+        'BATCH_SIZE': 64,  # minibatch size
+        'GAMMA': 0.99,  # discount factor
+        'TAU': 1e-3,  # for soft update of target parameters
+        'LR': 5e-4,  # learning rate
+        'UPDATE_EVERY': 4  # how often to update the network
+    }
+
     # Load the environment
     env = UnityEnvironment(file_name=settings['data'])
 
@@ -167,7 +177,7 @@ def main():
     brain = env.brains[brain_name]
 
     # Define the agent
-    agent = Agent(state_size=settings['state_size'], action_size=settings['action_size'], seed=settings['seed'])
+    agent = Agent(state_size=settings['state_size'], action_size=settings['action_size'], seed=settings['seed'], train_params=train_params)
 
     # Train the agent
     scores = dqn(agent, env, brain_name, settings)
@@ -176,7 +186,7 @@ def main():
     plot_results(scores, 'Scores_plot')
 
     # Test the agent
-    test_agent(env, brain_name, settings)
+    test_agent(env, brain_name, settings, train_params)
 
     # Close the environment
     env.close()
