@@ -1,0 +1,12 @@
+data: "data/Banana_Linux/Banana.x86_64")
+
+seed: 12345
+
+state_size: 37
+action_size: 4
+
+
+evaluation:
+    min_score: 13  # minimum average reward
+    window_size: 100  # window size for average reward
+    max_episodes: 1800  # maximum number of episodes to run
